@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -24,19 +25,19 @@ namespace ApexCharts.Models
         /// <inheritdoc/>
         public override void Write(Utf8JsonWriter writer, ValueOrList<T> value, JsonSerializerOptions options)
         {
-            if (value == null)
+            if (value == null || !value.Any())
             {
                 JsonSerializer.Serialize(writer, null, options);
             }
             else
             {
-                if (value.IsList)
+                if (value.Count > 1)
                 {
-                    JsonSerializer.Serialize(writer, value.GetList, typeof(IEnumerable<T>), options);
+                    JsonSerializer.Serialize(writer, value, typeof(IEnumerable<T>), options);
                 }
                 else
                 {
-                    JsonSerializer.Serialize(writer, value.GetValue, typeof(T), options);
+                    JsonSerializer.Serialize(writer, value.First(), typeof(T), options);
                 }
             }
         }

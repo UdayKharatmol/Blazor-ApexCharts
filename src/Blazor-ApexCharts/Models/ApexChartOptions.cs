@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -1780,7 +1779,7 @@ namespace ApexCharts
         /// <summary>
         /// Whether to fill the paths with solid colors or gradient.
         /// </summary>
-        public List<FillType> Type { get; set; }
+        public ValueOrList<FillType> Type { get; set; }
     }
 
 #pragma warning disable CS1591 // Enum values are self-explanatory
@@ -5542,29 +5541,6 @@ namespace ApexCharts
         Solid,
         Gradient
     };
-#pragma warning restore CS1591
-
-#pragma warning disable CS1591 // Primarily for internal use
-    public class ValueOrList<T>
-    {
-        private readonly T _str;
-        private readonly List<T> _list;
-        public bool IsList { get; private set; }
-
-        public T GetValue => _str;
-        public IEnumerable<T> GetList => _list;
-
-        public ValueOrList(T value)
-        {
-            _str = value;
-        }
-
-        public ValueOrList(IEnumerable<T> list)
-        {
-            IsList = true;
-            _list = list.ToList();
-        }
-    }
 
     public class Color : ValueOrList<string>
     {

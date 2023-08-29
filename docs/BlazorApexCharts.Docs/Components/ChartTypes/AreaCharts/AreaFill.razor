@@ -30,7 +30,7 @@
 
         options.Fill = new Fill
             {
-                Type = new List<FillType> { FillType.Gradient, FillType.Gradient },
+                Type = new ValueOrList<FillType>{ FillType.Gradient, FillType.Pattern },
                 Gradient = new FillGradient
                 {
                     ShadeIntensity = 1,
