@@ -26,11 +26,17 @@ namespace ApexCharts.Models
         public override void Write(Utf8JsonWriter writer, ValueOrList<T> value, JsonSerializerOptions options)
         {
             if (value == null || value.Count == 0)
+            {
                 JsonSerializer.Serialize(writer, null, options);
+            }
             else if (value.Count == 1)
+            {
                 JsonSerializer.Serialize(writer, value[0], typeof(T), options);
+            }
             else
+            {
                 JsonSerializer.Serialize(writer, (List<T>)value, typeof(IEnumerable<T>), options);
+            }
         }
 
     }
