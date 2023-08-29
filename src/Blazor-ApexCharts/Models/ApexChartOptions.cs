@@ -1833,12 +1833,12 @@ namespace ApexCharts
         /// <summary>
         /// Start color's opacity. If you want different opacity for different series, you can pass an array of numbers. For eg., opacityFrom: [0.2, 0.8]
         /// </summary>
-        public double? OpacityFrom { get; set; }
+        public ValueOrList<double> OpacityFrom { get; set; }
 
         /// <summary>
         /// End color's opacity
         /// </summary>
-        public double? OpacityTo { get; set; }
+        public ValueOrList<double> OpacityTo { get; set; }
 
         /// <summary>
         /// The option to use for shading the gradient

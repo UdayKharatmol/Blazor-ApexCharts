@@ -20,7 +20,7 @@
                          OrderByDescending="e=>e.Y" />
     </ApexChart>
 </DemoContainer>
-@code {
+ @code {
     private List<Order> orders = SampleData.GetOrders();
     private ApexChartOptions<Order> options = new ApexChartOptions<Order>();
 
@@ -30,13 +30,12 @@
 
         options.Fill = new Fill
             {
-                Type = new ValueOrList<FillType>{ FillType.Gradient, FillType.Pattern },
+                Type = new ValueOrList<FillType> { FillType.Gradient, FillType.Pattern },
                 Gradient = new FillGradient
                 {
                     ShadeIntensity = 1,
-                    OpacityFrom = 0.2,
-                    OpacityTo = 0.9,
-
+                    OpacityFrom = new ValueOrList<double>(0.2),
+                    OpacityTo = new ValueOrList<double>(0.9),
                 }
             };
 
