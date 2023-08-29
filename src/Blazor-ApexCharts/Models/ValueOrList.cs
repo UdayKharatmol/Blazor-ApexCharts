@@ -11,10 +11,19 @@ namespace ApexCharts
     {
         private List<T> values = new();
 
-        public ValueOrList()
+        public static implicit operator List<T>(ValueOrList<T> source)
         {
-            
+            return new List<T>(source);
         }
+
+        public static explicit operator ValueOrList<T>(List<T> source)
+        {
+            return new ValueOrList<T>(source);
+        }
+
+
+        public ValueOrList()
+        {}
 
         public ValueOrList(T value)
         {
