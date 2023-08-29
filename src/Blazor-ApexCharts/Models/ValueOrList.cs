@@ -25,9 +25,8 @@ namespace ApexCharts
         {
             if (list != null)
             {
-                values = list.ToList();
+                values.AddRange(list);
             }
-
         }
 
         public T this[int index] { get => values[index]; set => values[index] = value; }
