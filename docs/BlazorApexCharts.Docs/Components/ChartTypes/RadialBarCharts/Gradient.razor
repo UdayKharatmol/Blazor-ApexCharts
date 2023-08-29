@@ -1,0 +1,61 @@
+﻿
+
+
+<DemoContainer>
+    <ApexChart TItem="Order"
+               Title="Discount"
+               Options="options">
+
+        <ApexPointSeries TItem="Order"
+                         Items="orders"
+                         SeriesType=SeriesType.RadialBar
+                         Name="Gross Value"
+                         XValue="@(e => e.Country)"
+                         YAggregate="@(e => decimal.Round(e.Average(e => e.DiscountPercentage)))"
+                         OrderByDescending="e=>e.Y" />
+    </ApexChart>
+</DemoContainer>
+
+
+
+@code {
+    private List<Order> orders = SampleData.GetOrders();
+    private ApexChartOptions<Order> options = new();
+
+
+    protected override void OnInitialized()
+    {
+
+        options.Fill = new Fill
+            {
+                Type = new List<FillType> { FillType.Gradient, FillType.Gradient,  },
+                Gradient = new FillGradient
+                {
+                    Shade = GradientShade.Dark,
+                    Type = GradientType.Horizontal,
+                    ShadeIntensity = 0.8,
+                    InverseColors = true,
+                    OpacityFrom = 1,
+                    OpacityTo = 1,
+                    Stops = new List<double> { 0, 100 }
+                }
+            };
+
+        // fill:
+        //     {
+        //     type: "gradient",
+        // gradient:
+        //         {
+        //         shade: "dark",
+        //   type: "horizontal",
+        //   shadeIntensity: 0.5,
+        //   gradientToColors: ["#ABE5A1"],
+        //   inverseColors: true,
+        //   opacityFrom: 1,
+        //   opacityTo: 1,
+        //   stops: [0, 100]
+        // }
+
+        base.OnInitialized();
+    }
+}
