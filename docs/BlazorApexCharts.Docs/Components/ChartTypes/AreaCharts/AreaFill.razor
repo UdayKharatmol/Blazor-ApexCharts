@@ -1,7 +1,7 @@
 ﻿<DemoContainer>
     <ApexChart TItem="Order"
                Title="Fill Sample"
-               Options=options>
+               Options=options Debug>
 
         <ApexPointSeries TItem="Order"
                          Items="orders"
@@ -35,7 +35,7 @@
                 {
                     ShadeIntensity = 1,
                     OpacityFrom = new ValueOrList<double>(0.2),
-                    OpacityTo = new ValueOrList<double>(0.9),
+                    OpacityTo = new List<double> { 0.9 },
                 }
             };
 

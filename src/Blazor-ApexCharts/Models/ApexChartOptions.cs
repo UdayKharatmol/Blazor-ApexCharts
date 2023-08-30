@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApexCharts.Models;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -1838,7 +1839,8 @@ namespace ApexCharts
         /// <summary>
         /// End color's opacity
         /// </summary>
-        public ValueOrList<double> OpacityTo { get; set; }
+        [JsonConverter(typeof(ListOrValueConverter<double>))]
+        public IList<double> OpacityTo { get; set; }
 
         /// <summary>
         /// The option to use for shading the gradient
